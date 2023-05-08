@@ -1,0 +1,121 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int puntosJugador1 = 0;
+int puntosJugador2 = 0;
+bool jugando = true;
+char jugador_1[50],jugador_2[50];
+
+void tablero(int fila_1,int fila_2,int fila_3){
+	cout<<"  ";
+	for (int i=0;i<fila_1; i++){
+		cout << "x";
+	}
+	cout<<endl<<" ";
+	for (int i=0;i<fila_2; i++){
+		cout <<"x";
+	}
+	cout<<endl;
+	for (int i=0;i<fila_3; i++){
+		cout <<"x";
+	}
+	cout <<endl;
+}
+	
+	
+	void jugar_partida (){
+		int fila,objetos;
+		int fila_1 = 3;
+		int fila_2 = 5;
+		int fila_3 = 7;
+		
+		
+		bool turnoJugador1 = true;
+		
+		// Loop del juego
+		while (true) {
+			// Mostrar estado actual del juego
+			tablero(fila_1, fila_2, fila_3);
+			
+			// Solicitar el nombre del jugador en turno
+			if (turnoJugador1) {
+				cout << "Turno de " << jugador_1 << ":" << endl;
+			} else {
+				cout << "Turno de " << jugador_2 << ":" << endl;
+			}
+			
+			// Solicitar la fila y la cantidad de objetos a retirar
+			cout << "Ingrese el número de fila (1, 2 o 3): ";
+			cin >> fila;
+			cout << "Ingrese la cantidad de objetos a retirar: ";
+			cin >> objetos;
+			
+			// Verificar que la fila sea válida
+			if (fila < 1 || fila > 3) {
+				cout << "Fila inválida. Por favor, seleccione una fila válida." << endl;
+				continue;
+			}
+			
+			// Actualizar la fila y verificar que haya suficientes objetos para retirar
+			if (fila == 1 && objetos <= fila_1) {
+				fila_1 -= objetos;
+			} else if (fila == 2 && objetos <= fila_2) {
+				fila_2 -= objetos;
+			} else if (fila == 3 && objetos <= fila_3) {
+				fila_3 -= objetos;
+			} else {
+				cout << "Cantidad inválida de objetos. Por favor, seleccione una cantidad válida." << endl;
+				continue;
+			}
+			
+			// Verificar si el jugador retiró el último objeto
+			if (fila_1 == 0 && fila_2 == 0 && fila_3 == 0) {
+				// Mostrar el nombre del jugador que ganó y actualizar puntos
+				if (turnoJugador1) {
+					cout << jugador_2 << " gana!" << endl;
+					puntosJugador2 += 3;
+				} else {
+					cout << jugador_1 << " gana!" << endl;
+					puntosJugador1 += 3;
+				}
+				break;
+			}
+			
+			// Cambiar el turno del jugador
+			turnoJugador1 = !turnoJugador1;
+		}
+		
+		// Mostrar los puntos de ambos jugadores
+		cout << "Puntos de " << jugador_1 << ": " << puntosJugador1 << endl;
+		cout << "Puntos de " << jugador_2 << ": " << puntosJugador2 << endl;
+}
+	
+	bool VolverAJugar() {
+		char respuesta ;
+		do {
+			cout << "¿Quieres volver a jugar? (si/no): ";
+			cin >> respuesta;
+		} while (respuesta != 's' && respuesta != 'n');
+		return respuesta == 's';
+	}
+	
+	int main (){
+	
+		cout<<"Bienvenidos al jueno Nim"<<endl<<endl;
+		
+		cout<<"ingrese su nombre: ";
+		cin>>jugador_1;
+		cout<<"ingrese su nombre: ";
+		cin>>jugador_2;
+		
+		cout<<endl<<"!!iniciemos el juego¡¡"<<endl<<endl;
+		
+		while (jugando) {
+			jugar_partida();
+			jugando = VolverAJugar();
+		}
+		cout << "¡Gracias por jugar!";
+		
+		return 0;
+	}
