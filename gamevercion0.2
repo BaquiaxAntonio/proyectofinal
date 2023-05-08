@@ -86,10 +86,10 @@ void tablero(int fila_1,int fila_2,int fila_3){
             } else if (turnoJugador1 || !turnoJugador1){
                         if(fila_1 == 1 || fila_2 == 1 || fila_3 == 1){
                              if (turnoJugador1) {
-                                    cout << jugador_2 << " gana!" << endl;
-                                    puntosJugador2 += 3;
-                                } else if (turnoJugador1) {
                                     cout << jugador_1 << " gana!" << endl;
+                                    puntosJugador1 += 3;
+                                } else if (turnoJugador1) {
+                                    cout << jugador_2 << " gana!" << endl;
                                     puntosJugador1 += 3;
                                 }
                                 break;
@@ -106,3 +106,4 @@ void tablero(int fila_1,int fila_2,int fila_3){
 		cout << "Puntos de " << jugador_2 << ": " << puntosJugador2 << endl;
         return 0;
     }
+
