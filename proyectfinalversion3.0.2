@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -69,31 +68,49 @@ void tablero(int fila_1,int fila_2,int fila_3){
 				cout << "Cantidad inválida de objetos. Por favor, seleccione una cantidad válida." << endl;
 				continue;
 			}
-			
 			// Verificar si el jugador retiró el último objeto
-			if (fila_1 == 0 && fila_2 == 0 && fila_3 == 0) {
+            if (fila_1 == 0 && fila_2 == 0 && fila_3 == 0) {
 				cout<< jugador_1<<" y "<<jugador_2 <<"estan en empate"<<endl;
                     puntosJugador1 ++;
                     puntosJugador2 ++;
-                    break;
-            } else if (turnoJugador1 || !turnoJugador1){
-                        if(fila_1 == 1 || fila_2 == 1 || fila_3 == 1){
+					break;
+					continue;
+            }else if (turnoJugador1 || !turnoJugador1){
+                        if(fila_1 == 0 && fila_2 == 1 && fila_3 == 0){
                              if (turnoJugador1) {
                                     cout << jugador_1 << " gana!" << endl;
                                     puntosJugador1 += 3;
-                                } else if (turnoJugador1) {
+                                } else if (!turnoJugador1) {
                                     cout << jugador_2 << " gana!" << endl;
+                                    puntosJugador2 += 3;
+                                }
+		        break;
+			continue;
+                            }else if(fila_1 == 1 && fila_2 == 0 && fila_3 == 0){
+				if (turnoJugador1) {
+                                    cout << jugador_1 << " gana!" << endl;
                                     puntosJugador1 += 3;
+                                } else if (!turnoJugador1) {
+                                    cout << jugador_2 << " gana!" << endl;
+                                    puntosJugador2 += 3;
                                 }
                                 break;
-                            }
-            }
-            continue;
-			
+				continue;
+					}else if(fila_1 == 0 && fila_2 == 0 && fila_3 == 1){
+					if (turnoJugador1) {
+                                   	 cout << jugador_1 << " gana!" << endl;
+                                    	puntosJugador1 += 3;
+                                } else if (!turnoJugador1) {
+                                    cout << jugador_2 << " gana!" << endl;
+                                    puntosJugador2 += 3;
+                                }
+                                break;
+				continue;
+			}
+			}
 			// Cambiar el turno del jugador
 			turnoJugador1 = !turnoJugador1;
 		}
-		
 		// Mostrar los puntos de ambos jugadores
 		cout << "Puntos de " << jugador_1 << ": " << puntosJugador1 << endl;
 		cout << "Puntos de " << jugador_2 << ": " << puntosJugador2 << endl;
