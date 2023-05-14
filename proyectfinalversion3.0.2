@@ -70,11 +70,11 @@ void tablero(int fila_1,int fila_2,int fila_3){
 			}
 			// Verificar si el jugador retiró el último objeto
             if (fila_1 == 0 && fila_2 == 0 && fila_3 == 0) {
-				cout<< jugador_1<<" y "<<jugador_2 <<"estan en empate"<<endl;
-                    puntosJugador1 ++;
-                    puntosJugador2 ++;
-					break;
-					continue;
+			cout<< jugador_1<<" y "<<jugador_2 <<"estan en empate"<<endl;
+                    	puntosJugador1 ++;
+                    	puntosJugador2 ++;
+		        break;
+		        continue;
             }else if (turnoJugador1 || !turnoJugador1){
                         if(fila_1 == 0 && fila_2 == 1 && fila_3 == 0){
                              if (turnoJugador1) {
