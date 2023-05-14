@@ -119,7 +119,7 @@ void tablero(int fila_1,int fila_2,int fila_3){
 	bool VolverAJugar() {
 		char respuesta ;
 		do {
-			cout << "¿Quieres volver a jugar? (si/no): ";
+			cout << "Presione 's' si decea seguir jugando o 'n' si decea terminar el juego\n";
 			cin >> respuesta;
 		} while (respuesta != 's' && respuesta != 'n');
 		return respuesta == 's';
