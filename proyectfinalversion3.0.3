@@ -120,7 +120,7 @@ void tablero(int fila_1,int fila_2,int fila_3){
 	bool VolverAJugar() {
 		char respuesta ;
 		do {
-			cout << "Presione 's' si decea seguir jugando o 'n' si decea terminar el juego\n";
+			cout << "Presione 's' si desea seguir jugando o 'n' si desea terminar el juego\n";
 			cin >> respuesta;
 		} while (respuesta != 's' && respuesta != 'n');
 		return respuesta == 's';
@@ -128,7 +128,7 @@ void tablero(int fila_1,int fila_2,int fila_3){
 	
 	int main (){
 	
-		cout<<"Bienvenidos al jueno Nim"<<endl<<endl;
+		cout<<"Bienvenidos al juego Nim"<<endl<<endl;
 		
 		cout<<"ingrese su nombre: ";
 		cin>>jugador_1;
